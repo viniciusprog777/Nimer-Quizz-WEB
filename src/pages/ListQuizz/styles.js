@@ -10,6 +10,12 @@ export const Container = styled.div`
   justify-content: left;
 `;
 
+export const ActionsContainer = styled.div`
+  margin-top: 10px;
+
+  text-align: center;
+`;
+
 export const Header = styled.header`
   position: fixed;
   width: 100%;
@@ -135,7 +141,6 @@ export const FeedContainer = styled.div`
   background-color: var(--light);
 `;
 
-export const ActionsContainer = styled.div``;
 
 export const QuadradinhoLogo = styled.div`
   width: 50px;

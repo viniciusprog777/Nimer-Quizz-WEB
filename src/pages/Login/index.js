@@ -1,24 +1,53 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Link, useHistory } from "react-router-dom";
+
 import './login.css'
 
 import { MdEmail, MdLock } from "react-icons/md"
 import { HiEye, HiEyeOff } from "react-icons/hi"
+import { api } from "../../services/api";
+import { signIn } from "../../services/security";
+
+import nymerLogo from "../../assets/NymerLogo.png"
 
 function Login() {
-   const [email, setEmail] = useState("")
-   const [password, setPassword] = useState("")
-   const [show, setShow] = useState(false)
+   const history = useHistory();
 
-   const handleClick = (e) => {
-      e.preventDefault()
-      setShow(!show);
-   }
+  const [show, setShow] = useState(false);
+
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await api.post("/sessions", login);
+
+      console.log(response.data.token);
+      signIn(response.data);
+
+      history.push("/register");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleInput = (e) => {
+    setLogin({ ...login, [e.target.id]: e.target.value });
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setShow(!show);
+  };
 
    return (
       <div className="login">
          <div className="login-logo">
             <img
-               src="https://i.imgur.com/1hBDc51.png"
+               src={nymerLogo}
                alt="Nymer Quizz"
             />
          </div>
@@ -29,20 +58,22 @@ function Login() {
             <div className="login-loginInputEmail">
                <MdEmail />
                <input
+                  id="email"
                   type="email"
                   placeholder="Digite um email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  value={login.email}
+                  onChange={handleInput}
                />
             </div>
 
             <div className="login-loginInputPassword">
                <MdLock />
                <input
+                  id="password"
                   placeholder="Digite sua senha"
                   type={show ? "text" : "password"}
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  value={login.password}
+                  onChange={handleInput}
                />
                <div className="login-eye">
                   {show ? (
@@ -66,8 +97,8 @@ function Login() {
 
             <h4>Não tenho conta!</h4>
 
-            <button type="submit">
-               Cadastrar
+            <button>
+               {/* <Link to="/register"> Cadastrar</Link> */}
             </button>
          </div>
       </div>

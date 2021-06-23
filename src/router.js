@@ -1,13 +1,22 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Course from "./pages/Course";
 import Class from "./pages/Class";
+import Course from "./pages/Course";
+import Institution from "./pages/Institution";
+import InstitutionRegister from "./pages/InstitutionRegister";
+import ListQuizz from "./pages/ListQuizz";
+import LoadingPage from "./pages/LoadingPage";
+import LoadingProfStart from "./pages/LoadingProfStart";
+import Login from "./pages/Login";
+import QuizzScreen from "./pages/QuizzScreen";
+import QuizzScreenEnd from "./pages/QuizzScreenEnd";
+import Home from "./pages/Home";
 import Register from "./pages/Register";
+import { isSignedIn } from "./services/security";
+
 
 function PrivateRoute({ children, ...rest }) {
-  if (true) {
+  if (isSignedIn()) {
     return (
       <>
         <Route {...rest}>{children}</Route>
@@ -40,6 +49,12 @@ function Router() {
 
         <PrivateRoute path="/class">
           <Class />
+        </PrivateRoute>
+        <PrivateRoute path="/institution">
+          <Institution />
+        </PrivateRoute>
+        <PrivateRoute path="/institution/register">
+          <InstitutionRegister />
         </PrivateRoute>
       </Switch>
     </BrowserRouter>

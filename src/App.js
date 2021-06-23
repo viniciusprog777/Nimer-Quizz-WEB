@@ -1,4 +1,5 @@
 import React from "react";
+import globalHook from "use-global-hook";
 import Class from "../src/pages/Class";
 import Routes from "./router";
 import { GlobalStyles } from "./GlobalStyles";
@@ -14,15 +15,28 @@ import Result from "./pages/Result";
 import ResultT from "./pages/ResultT";
 import WaitingStud from "./pages/WaitingStud";
 
+const initialState = {
+  socket: null,
+};
+
+const actions = {
+  addToSocket: (store, amount) => {
+    const newSocketConex = amount;
+    store.setState({ socket: newSocketConex });
+  },
+};
+
+const useGlobal = globalHook(React, initialState, actions);
+
 function App() {
   return (
     <div className="app">
       <>
         <GlobalStyles />
-        <LoadingProfStart />
+        <Routes />
       </>
     </div>
   );
 }
 
-export default App;
+export { App, useGlobal };

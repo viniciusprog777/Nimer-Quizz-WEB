@@ -10,13 +10,16 @@ import QuizzScreen from "./pages/QuizzScreen";
 import InstitutionRegister from "./pages/InstitutionRegister";
 import Home from "./pages/Home";
 import Course from "./pages/Course";
+import Result from "./pages/Result";
+import ResultT from "./pages/ResultT";
+import WaitingStud from "./pages/WaitingStud";
 
 function App() {
   return (
     <div className="app">
       <>
         <GlobalStyles />
-        <Course/>
+        <LoadingProfStart />
       </>
     </div>
   );

@@ -9,11 +9,9 @@ import LoadingPage from "./pages/LoadingPage";
 import LoadingProfStart from "./pages/LoadingProfStart";
 import Login from "./pages/Login";
 import QuizzScreen from "./pages/QuizzScreen";
-import QuizzScreenEnd from "./pages/QuizzScreenEnd";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import { isSignedIn } from "./services/security";
-
 
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {

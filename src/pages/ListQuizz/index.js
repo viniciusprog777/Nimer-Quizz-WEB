@@ -25,13 +25,12 @@
 // function NewQuizz() {
 //   const [newQuizz, setNewQuizz] = useState({
 //     title: "",
-//     description: ""
+//     description: "",
 //   });
 
 //   const [turma, setTurma] = useState([]);
 //   const [turmaSel, setTurmaSel] = useState([]);
 //   const turmaRef = useRef();
-
 
 //   /*useEffect(() => {
 //     const loadTurmas = async () => {
@@ -98,8 +97,7 @@
 //       alert(error);
 
 //       */
-//     }
-  
+//   };
 
 //   return (
 //     <FormNewQuizz onSubmit={handleAddNewQuizz}>
@@ -119,12 +117,7 @@
 //         minLength="10"
 //         required
 //       />
-//       <Select
-//         id="turma"
-//         label="turma"
-//         handler={handleTurmas}
-//         ref={turmaRef}
-//       >
+//       <Select id="turma" label="turma" handler={handleTurmas} ref={turmaRef}>
 //         <option value="">Selecione</option>
 //         {turma.map((c) => (
 //           <option key={c.id} value={c.id}>
@@ -158,15 +151,11 @@
 
 //   return (
 //     <>
-//     {showNewQuestion && (
-//         <Modal
-//           title="Crie um quizz"
-//           handleClose={() => setShowNewQuizz(false)}
-//         >
-//           <NewQuizz
-            
-//           />
-//         //</Modal>
+//       {showNewQuestion && (
+//         <Modal title="Crie um quizz" handleClose={() => setShowNewQuizz(false)}>
+//           <NewQuizz />
+//           //
+//         </Modal>
 //       )}
 //       <Container>
 //         <Header>
@@ -240,7 +229,7 @@
 //                   <p>Rafael Leme</p>
 //                 </CardHomeUp>
 
-//                 <hr/>
+//                 <hr />
 //               </TesteCima>
 //               <span>Quizz Finalizados</span>
 //               <TesteBaixo>
@@ -271,9 +260,7 @@
 //                   <p>Grafico</p>
 //                   <label>Nota</label>
 //                 </CardHomeDown>
-
 //               </TesteBaixo>
-              
 //             </MainFeed>
 //           </FeedContainer>
 //           <ActionsContainer>
@@ -287,5 +274,4 @@
 //   );
 // }
 
-
-// export default ListQuizz
+// export default ListQuizz;

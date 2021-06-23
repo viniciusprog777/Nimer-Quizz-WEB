@@ -134,16 +134,16 @@ export const MainFeed = styled.div`
   align-items: flex-start;
 
   font-size: 16px;
-  padding: 50px;
-
+  padding:50px;
+  
   > span {
-    font-size: 20px;
+    font-size:20px;
     margin-bottom: 10px;
     color: var(--darkdark);
 
     :hover {
       box-shadow: 0px 0px 5px var(--darkShadow);
-    }
+    }   
   }
 `;
 
@@ -151,110 +151,96 @@ export const CardHomeUp = styled.div`
   width: 1000px;
   height: 200px;
   background-color: var(--primary);
-  margin: 10px;
+  margin:10px;
   align-items: center;
   display: flex;
   margin-left: 160px;
   border-radius: 60px;
+  
+
 
   > h1 {
     font-size: 50px;
-    margin-left: 25px;
+    margin-left:25px;
     color: var(--light);
-    margin-left: 50px;
+    margin-left:30px;
   }
 
-  :hover {
+  :hover{
     text-shadow: 2px 2px 5px var(--darkdark);
   }
 `;
 
-export const TesteCima = styled.div`
-  margin: 2px;
-  flex-direction: row;
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
 
-  > span {
-    font-size: 18px;
-  }
+
+export const TesteCima = styled.div`
+margin:2px;
+flex-direction: row;
+display:flex;
+align-items: flex-start;
+margin-bottom:20px;
+
+> span {
+  font-size:18px;
+}
 `;
 
 export const Footer = styled.div`
-  height: 150px;
-  width: 1000px;
-  background-color: var(--primary);
-  display: flex;
-  margin-left: 180px;
-  margin-top: 150px;
-  border-radius: 50px;
+height: 150px;
+width: 1000px;
+background-color: var(--primary);
+display: flex;
+margin-left: 180px;
+margin-top: 150px;
+border-radius: 50px;
+
+
 `;
 
 export const FooterBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+display: flex;
+align-items: center;
+justify-content: flex-start;
 `;
 
 export const CirculoFooter = styled.div`
-  height: 120px;
-  width: 120px;
-  background-color: var(--light);
-  border-radius: 100px;
-  margin: 10px;
-`;
-
-export const ButtonStartQuizz = styled.div`
-  width: 200px;
-  height: 100px;
-  background-color: var(--secondary);
-  color: var(--light);
-  margin-left: 10px;
-  border-radius: 50px;
-  border-color: black;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: 35px;
-
-  :hover {
-    text-shadow: 2px 2px 5px var(--darkdark);
-    background-color: var(--secondary2);
-    transform: scale(1.1);
-  }
-`;
-
-export const ButtonCancelQuizz = styled.div`
-  width: 200px;
-  height: 100px;
-  background-color: var(--vermelhao);
-  color: var(--light);
-  margin-left: 20px;
-  border-radius: 50px;
-  border-color: black;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: 35px;
-
-  :hover {
-    text-shadow: 2px 2px 5px var(--darkdark);
-    background-color: var(--vermelhao2);
-    transform: scale(1.1);
-  }
+height: 120px;
+width: 120px;
+background-color: var(--light);
+border-radius: 100px;
+margin: 10px;
 `;
 
 export const CardHomeDown = styled.div`
-  width: 500px;
-  height: 200px;
+  width: 600px;
+  height: 250px;
   background-color: var(--primary);
-  margin: 30px;
+  margin:30px;
   padding: 30px;
   align-items: center;
   display: flex;
-  margin-left: 420px;
+  margin-left: 350px;
   border-radius: 60px;
+  color: var(--light)
+`;
+
+export const ButtonStartQuizz = styled.div`
+width: 200px;
+height: 100px;
+background-color: var(--secondary);
+color: var(--light);
+margin-left: 10px;
+border-radius: 50px;
+border-color: black;
+align-items: center;
+display:flex;
+flex-direction: row;
+justify-content: center;
+font-size: 35px;
+
+:hover {
+      text-shadow: 2px 2px 5px var(--darkdark);
+      background-color: var(--secondary2);
+      transform: scale(1.1);
+    }
 `;

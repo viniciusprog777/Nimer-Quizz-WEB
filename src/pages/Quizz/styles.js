@@ -212,6 +212,44 @@ export const ButtonCreateQuizz = styled.button`
     box-shadow: 0px 0px 5px var(--darkShadow);
   }
 `;
+export const FormQuizz = styled.form`
+  min-width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid black;
+
+  > button {
+    position: relative;
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+
+    display: flex;
+    align-self: flex-end;
+    margin-right: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+export const QuestionCard = styled.div`
+  width: 90%;
+  height: 50px;
+  display: flex;
+  align-self: center;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  flex-direction: row;
+`;
+export const ChoiceCard = styled.div`
+  width: 80%;
+  height: 20px;
+  display: flex;
+  align-self: center;
+  border: 1px solid black;
+  margin-bottom: 5px;
+  flex-direction: row;
+`;
 
 export const MainFeed = styled.div`
   width: 100hv;
@@ -222,16 +260,16 @@ export const MainFeed = styled.div`
   align-items: flex-start;
 
   font-size: 16px;
-  padding:50px;
-  
+  padding: 50px;
+
   > span {
-    font-size:20px;
+    font-size: 20px;
     margin-bottom: 10px;
     color: var(--darkdark);
 
     :hover {
       box-shadow: 0px 0px 5px var(--darkShadow);
-    }   
+    }
   }
 `;
 
@@ -239,15 +277,14 @@ export const CardHomeUp = styled.div`
   width: 250px;
   height: 350px;
   background-color: var(--primary);
-  margin-top:15px;
-  margin:10px;
-
+  margin-top: 15px;
+  margin: 10px;
 
   > li {
     font-size: 28px;
     list-style-type: none;
-    margin-left:25px;
-    padding-top:15px;
+    margin-left: 25px;
+    padding-top: 15px;
     color: var(--light);
   }
 `;
@@ -256,40 +293,37 @@ export const CardHomeDown = styled.div`
   width: 250px;
   height: 350px;
   background-color: var(--primary);
-  margin-top:15px;
-  margin:10px;
+  margin-top: 15px;
+  margin: 10px;
 
   > li {
     font-size: 28px;
     list-style-type: none;
-    margin-left:25px;
-    padding-top:15px;
+    margin-left: 25px;
+    padding-top: 15px;
     color: var(--light);
   }
 `;
 
-
-
 export const TesteCima = styled.div`
-margin:2px;
-flex-direction: row;
-display:flex;
-align-items: flex-start;
-margin-bottom:20px;
+  margin: 2px;
+  flex-direction: row;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
 
-> span {
-  font-size:18px;
-}
+  > span {
+    font-size: 18px;
+  }
 `;
 
 export const TesteBaixo = styled.div`
-margin:2px;
-flex-direction: row;
-display:flex;
-align-items: flex-start;
+  margin: 2px;
+  flex-direction: row;
+  display: flex;
+  align-items: flex-start;
 
-> span {
-font-size:18px;
-}
+  > span {
+    font-size: 18px;
+  }
 `;
-

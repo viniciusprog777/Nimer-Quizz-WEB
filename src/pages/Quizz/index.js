@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import Modal from "../../components/Modal";
+import { io } from "socket.io-client";
+
 import {
   Container,
   Header,
@@ -18,6 +21,8 @@ import {
   TesteCima,
   TesteBaixo,
 } from "./styles";
+import { useGlobal } from "../../App";
+
 
 
 
@@ -25,6 +30,15 @@ import {
 function Home() {
   const [] = useState("");
   const [show, setShow] = useState(false);
+  const [showNewQuizz, setShowNewQuizz] = useState(false);
+  const [globalState, globalActions] = useGlobal();
+
+
+  const handleNewQuizz = (e) =>{
+    //e.preventDefault();
+    setShowNewQuizz(true)
+    globalActions.addToSocket(io("http://localhost:3333/"));
+  }
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -33,6 +47,14 @@ function Home() {
 
   return (
     <>
+      {showNewQuizz && (
+        <Modal
+          title="Criar Quizz"
+          handleClose={() => setShowNewQuizz(false)}
+        >
+          <button onClick={console.log(globalState.socket)}>Aqui</button>
+        </Modal>
+      )}
       <Container>
         <Header>
           <ProfilePic />
@@ -60,7 +82,7 @@ function Home() {
                 <li>Alunos</li>
                 <li>Gráficos</li>
               </SubMenus>
-              <ButtonCreateQuizz>Criar Quizz</ButtonCreateQuizz>
+              <ButtonCreateQuizz onClick={() => handleNewQuizz()}>Criar Quizz</ButtonCreateQuizz>
             </HeaderFeed>
             <MainFeed>
               <span>Em andamento</span>

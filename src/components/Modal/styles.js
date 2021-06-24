@@ -14,8 +14,8 @@ export const Overlay = styled.div`
 `;
 
 export const ModalContainer = styled.section`
-  min-width: 250px;
-  min-height: 250px;
+  min-width: 750px;
+  min-height: 750px;
   max-height: calc(100vh - 20px);
   padding: 20px;
 
@@ -23,7 +23,7 @@ export const ModalContainer = styled.section`
 
   overflow-y: auto;
 
-  background-color: var(--dark);
+  background-color: var(--light);
   box-shadow: 0px 0px 10px black;
   border-radius: 4px;
 

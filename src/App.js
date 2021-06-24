@@ -9,7 +9,7 @@ import LoadingPage from "./pages/LoadingPage";
 import LoadingProfStart from "./pages/LoadingProfStart";
 import QuizzScreen from "./pages/QuizzScreen";
 import InstitutionRegister from "./pages/InstitutionRegister";
-import Home from "./pages/Home";
+import Quizz from "./pages/Quizz";
 import Course from "./pages/Course";
 import Result from "./pages/Result";
 import ResultT from "./pages/ResultT";
@@ -33,7 +33,7 @@ function App() {
     <div className="app">
       <>
         <GlobalStyles />
-        <Routes />
+        <Quizz />
       </>
     </div>
   );

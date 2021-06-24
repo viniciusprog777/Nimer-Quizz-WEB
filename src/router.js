@@ -9,7 +9,7 @@ import LoadingPage from "./pages/LoadingPage";
 import LoadingProfStart from "./pages/LoadingProfStart";
 import Login from "./pages/Login";
 import QuizzScreen from "./pages/QuizzScreen";
-import Home from "./pages/Home";
+import Quizz from "./pages/Quizz";
 import Register from "./pages/Register";
 import { isSignedIn } from "./services/security";
 
@@ -37,8 +37,8 @@ function Router() {
           <Register />
         </Route>
 
-        <PrivateRoute path="/home">
-          <Home />
+        <PrivateRoute path="/quizz">
+          <Quizz />
         </PrivateRoute>
 
         <PrivateRoute path="/course">

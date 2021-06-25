@@ -81,7 +81,7 @@ function Home() {
           },
         ],
       });
-      history.push("/");
+      history.push("/hall");
     } catch (error) {}
   };
   const handleQuestions = async () => {

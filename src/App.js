@@ -33,7 +33,7 @@ function App() {
     <div className="app">
       <>
         <GlobalStyles />
-        <Quizz />
+        <QuizzScreen/>
       </>
     </div>
   );

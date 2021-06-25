@@ -126,15 +126,16 @@ export const ButtonCreateQuizz = styled.button`
 `;
 
 export const MainFeed = styled.div`
-  width: 100hv;
+  width: 100vw;
   height: 94%;
   flex-direction: column;
   background-color: var(--light);
   display: flex;
-  align-items: flex-start;
+  align-items: center; 
+  justify-content: center;
 
   font-size: 16px;
-  padding: 50px;
+  /* padding: 50px; */
 
   > span {
     font-size: 20px;
@@ -150,11 +151,13 @@ export const MainFeed = styled.div`
 export const CardHomeUp = styled.div`
   width: 1000px;
   height: 200px;
+  border: 10px solid green;
+  margin-bottom: 100px;
   background-color: var(--primary);
   margin: 10px;
+  justify-content: center;
   align-items: center;
   display: flex;
-  margin-left: 160px;
   border-radius: 60px;
 
   > h1 {
@@ -173,7 +176,7 @@ export const TesteCima = styled.div`
   margin: 2px;
   flex-direction: row;
   display: flex;
-  align-items: flex-start;
+  border: 1px solid black;
   margin-bottom: 20px;
 
   > span {
@@ -183,12 +186,12 @@ export const TesteCima = styled.div`
 
 export const Footer = styled.div`
   height: 150px;
-  width: 1000px;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
   background-color: var(--primary);
   display: flex;
-  margin-left: 180px;
-  margin-top: 150px;
-  border-radius: 50px;
+  margin-top: 50px;
 `;
 
 export const FooterBox = styled.div`
@@ -255,6 +258,6 @@ export const CardHomeDown = styled.div`
   padding: 30px;
   align-items: center;
   display: flex;
-  margin-left: 420px;
+  /* margin-left: 420px; */
   border-radius: 60px;
 `;

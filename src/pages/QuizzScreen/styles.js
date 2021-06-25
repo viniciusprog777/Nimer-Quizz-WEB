@@ -8,7 +8,7 @@ export const Container = styled.div`
 
   display: flex;
   justify-content: left;
-`;
+`; 
 
 export const Header = styled.header`
   position: fixed;
@@ -64,9 +64,13 @@ export const FeedContainer = styled.div`
 // `;
 
 export const MainFeed = styled.div`
-  width: 100hv;
+  width: 100vw;
   height: 94%;
   background-color: var(--light);
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+
 
   font-size: 16px;
   padding:50px;
@@ -83,23 +87,46 @@ export const MainFeed = styled.div`
 `;
 
 export const CardHomeUp = styled.div`
-  width: 1000PX;
-  height: 570px;
+  width: 1000px;
+  min-height: 200px;
+  height: auto;
+  overflow: hidden;
   background-color: var(--primary);
-  margin:10px;
-  align-items: center;
   display: flex;
-  margin-left: 190px;
-  border-radius: 60px;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
+  padding-bottom: 20px;
   
 
 
   > h1 {
     font-size: 35px;
-    margin-left:25px;
+    display: flex;
+    align-self: center;
+    
     color: var(--light);
-    margin-left:50px;
+    
   }
+`;
+
+export const ListChoices = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 10px;
+`;
+export const ButtonChoices = styled.button`
+ display: flex;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  padding-left: 5px;
+  align-items: center;
+  box-shadow: 5px 5px 10px black;
+  background-color: var(--light);
 `;
 
 export const TesteCima = styled.div`
@@ -107,28 +134,20 @@ margin:2px;
 margin-bottom:20px;
 `;
 
-export const TitleAndMore = styled.div`
-
-
-> h1 {
-  font-size:38px;
-  color: var(--light);
-  padding-left: 320px;
-  padding-bottom: 100px;
-}
-`;
 
 export const CardQuestion = styled.div`
-
+  width: 100%;
 `;
 
 export const NumberQuest = styled.div`
-padding: 15px;
->span{
-color: var(--light);
-font-size: 35px;
-margin-top: -100px;
-}
+  padding: 15px;
+  display: flex;
+  align-items: flex-start;
+  >span{
+    color: var(--light);
+    font-size: 35px;
+    
+  }
 `;
 
 export const QuestionZZ = styled.div`
@@ -140,6 +159,29 @@ margin: 20px;
   margin: 20px;
   color: var(--light);
 }
+`;
+export const Footer = styled.div`
+  height: 100px;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  background-color: var(--primary);
+  display: flex;
+  margin-top: 50px;
+`;
+
+export const FooterBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+export const CirculoFooter = styled.div`
+  height: 80px;
+  width: 80px;
+  background-color: var(--light);
+  border-radius: 100px;
+  margin: 10px;
 `;
 
 

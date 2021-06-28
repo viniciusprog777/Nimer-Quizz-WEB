@@ -50,7 +50,7 @@ function Register() {
 
       alert("Aluno Cadastrada");
 
-      history.push("/home");
+      history.push("/quizzs");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);

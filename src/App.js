@@ -6,7 +6,7 @@ import { GlobalStyles } from "./GlobalStyles";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import LoadingPage from "./pages/LoadingPage";
-import LoadingProfStart from "./pages/LoadingProfStart";
+import Hall from "./pages/Hall";
 import QuizzScreen from "./pages/QuizzScreen";
 import InstitutionRegister from "./pages/InstitutionRegister";
 import Quizz from "./pages/Quizz";
@@ -33,7 +33,7 @@ function App() {
     <div className="app">
       <>
         <GlobalStyles />
-        <QuizzScreen/>
+        <Routes />
       </>
     </div>
   );

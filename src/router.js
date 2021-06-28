@@ -4,9 +4,7 @@ import Class from "./pages/Class";
 import Course from "./pages/Course";
 import Institution from "./pages/Institution";
 import InstitutionRegister from "./pages/InstitutionRegister";
-import ListQuizz from "./pages/ListQuizz";
-import LoadingPage from "./pages/LoadingPage";
-import LoadingProfStart from "./pages/LoadingProfStart";
+import Hall from "./pages/Hall";
 import Login from "./pages/Login";
 import QuizzScreen from "./pages/QuizzScreen";
 import Quizz from "./pages/Quizz";
@@ -37,7 +35,7 @@ function Router() {
           <Register />
         </Route>
 
-        <PrivateRoute path="/quizz">
+        <PrivateRoute path="/quizzs">
           <Quizz />
         </PrivateRoute>
 
@@ -53,6 +51,12 @@ function Router() {
         </PrivateRoute>
         <PrivateRoute path="/institution/register">
           <InstitutionRegister />
+        </PrivateRoute>
+        <PrivateRoute path="/hall">
+          <Hall/>
+        </PrivateRoute>
+        <PrivateRoute path="/quizzes">
+          <QuizzScreen/>
         </PrivateRoute>
       </Switch>
     </BrowserRouter>

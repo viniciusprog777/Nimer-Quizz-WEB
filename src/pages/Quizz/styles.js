@@ -26,11 +26,12 @@ export const Header = styled.header`
 export const ProfilePic = styled.img`
   width: 50px;
   height: 50px;
-  position: right;
-  display: right;
+  position: absolute;
+  display: flex;
+  right: 0;
 
   margin: 20px;
-  margin-left: 1250px;
+
   margin-top: 5px;
   border-radius: 30px;
   /* border: 2px solid var(--darkdark); */
@@ -326,4 +327,17 @@ export const TesteBaixo = styled.div`
   > span {
     font-size: 18px;
   }
+`;
+
+export const ButtonEnterQuizz = styled.button`
+  width: 250px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-size: 24px;
+  background-color: white;
+  font-weight: bold;
+  cursor: pointer;
 `;

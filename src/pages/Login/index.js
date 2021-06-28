@@ -13,12 +13,6 @@ import nymerLogo from "../../assets/NymerLogo.png";
 import { useGlobal } from "../../App";
 
 function Login() {
-  const [globalState, globalActions] = useGlobal();
-
-  useEffect(async () => {
-    await globalActions.addToSocket(io("http://localhost:3333/"));
-    console.log(globalState.socket);
-  }, []);
   const history = useHistory();
 
   const [show, setShow] = useState(false);
@@ -29,15 +23,13 @@ function Login() {
   });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
     try {
       const response = await api.post("/sessions", login);
 
       console.log(response.data.token);
       signIn(response.data);
 
-      history.push("/register");
+      history.push("/quizzs");
     } catch (error) {
       console.error(error);
     }
@@ -89,13 +81,16 @@ function Login() {
           </div>
         </div>
 
-        <button type="submit" onClick={() => history.push("/register")}>
+        <button type="submit" onClick={() => handleSubmit()}>
           Entrar
         </button>
 
         <h4>Não tenho conta!</h4>
 
-        <button>{/* <Link to="/register"> Cadastrar</Link> */}</button>
+        <button>
+          {" "}
+          <Link to="/register"> Cadastrar</Link>
+        </button>
       </div>
     </div>
   );

@@ -17,8 +17,7 @@ import {
   QuestionZZ,
   Footer,
   FooterBox,
-  CirculoFooter
-
+  CirculoFooter,
 } from "./styles";
 
 function QuizzScreen() {
@@ -27,44 +26,45 @@ function QuizzScreen() {
   const [questions, setQuestions] = useState(null);
   const [globalState, globalActions] = useGlobal();
 
-  const [showQuestion, setShowQuestion] = useState(true)
+  const [showQuestion, setShowQuestion] = useState(true);
 
   const handleSubmit = async (choiceId) => {
     try {
-      let quizzId
-      questions.nextQuestion.Quizzs.map((e) => {quizzId = e.id});
-      globalState.socket.emit('answerQuizz', {
+      let quizzId;
+      questions.nextQuestion.Quizzs.map((e) => {
+        quizzId = e.id;
+      });
+      globalState.socket.emit("answerQuizz", {
         studentId: 1,
         choiceId,
-        quizzId
-      })
-      setShowQuestion(false)
-      setQuestions(null)       
+        quizzId,
+      });
+      setShowQuestion(false);
+      setQuestions(null);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const handleQuestions = async () => {
     try {
-      await globalState.socket.emit('nextQuestion', {
+      await globalState.socket.emit("nextQuestion", {
         userId: 2,
         quizzId: 1,
         questionId: 0,
-      })
-      await globalState.socket.on('resNextQuestion', q => {
+      });
+      await globalState.socket.on("resNextQuestion", (q) => {
         setQuestions(q);
         console.log(q);
-      })
-
+      });
     } catch (error) {}
   };
   useEffect(() => {
     globalActions.addToSocket(io("http://localhost:3333/"));
-    
+
     handleQuestions();
   }, []);
-  
+
   // const handleClick = (e) => {
   //   e.preventDefault();
   //   setShow(!show);
@@ -73,52 +73,42 @@ function QuizzScreen() {
   return (
     <>
       <Container>
-        <Header>
-        </Header>
+        <Header></Header>
         <Content>
           <FeedContainer>
             <MainFeed>
-              <button onClick={() => handleQuestions()}>Conexão</button>
               <TesteCima>
                 <CardHomeUp>
                   {showQuestion && questions && (
                     <CardQuestion>
                       <NumberQuest>
-                          <span>1- </span>
-                          <span>{questions.nextQuestion.title}</span>
+                        <span>1- </span>
+                        <span>{questions.nextQuestion.title}</span>
                       </NumberQuest>
-                            <ListChoices>
-                              {questions.choices.map((e) => (
-                                <ButtonChoices onClick={() => handleSubmit(e.id)}>{e.description}</ButtonChoices>
-                              ))}
-                            </ListChoices>
-                      <QuestionZZ>
-                      </QuestionZZ>
+                      <ListChoices>
+                        {questions.choices.map((e) => (
+                          <ButtonChoices onClick={() => handleSubmit(e.id)}>
+                            {e.description}
+                          </ButtonChoices>
+                        ))}
+                      </ListChoices>
+                      <QuestionZZ></QuestionZZ>
                     </CardQuestion>
                   )}
-                  {!showQuestion && (
-                    <h1>Aguardando outros jogadores</h1>
-                  )}
+                  {!showQuestion && <h1>Aguardando outros jogadores</h1>}
                 </CardHomeUp>
               </TesteCima>
               <Footer>
-                  <FooterBox>
+                <FooterBox>
+                  <CirculoFooter>{/* A foto vem aqui */}</CirculoFooter>
 
-                      <CirculoFooter>
-                        {/* A foto vem aqui */}
-                      </CirculoFooter>
+                  <CirculoFooter></CirculoFooter>
 
-                      <CirculoFooter>
-                      </CirculoFooter>
+                  <CirculoFooter></CirculoFooter>
 
-                      <CirculoFooter>
-                      </CirculoFooter>
-
-                      <CirculoFooter>
-                      </CirculoFooter>
-                  </FooterBox>
+                  <CirculoFooter></CirculoFooter>
+                </FooterBox>
               </Footer>
-              
             </MainFeed>
           </FeedContainer>
         </Content>

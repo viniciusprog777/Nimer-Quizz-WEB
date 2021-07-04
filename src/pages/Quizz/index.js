@@ -24,6 +24,7 @@ import {
   TesteCima,
   TesteBaixo,
   ChoiceCard,
+  ButtonEnterQuizz
 } from "./styles";
 import { useGlobal } from "../../App";
 import { api } from "../../services/api";
@@ -59,6 +60,7 @@ function Question(question) {
 function Home() {
   const history = useHistory();
   const [questions, setQuestions] = useState();
+  const [quizzs, setQuizzs] = useState();
   const [show, setShow] = useState(false);
   const [showNewQuizz, setShowNewQuizz] = useState(false);
   const [globalState, globalActions] = useGlobal();
@@ -84,6 +86,19 @@ function Home() {
       history.push("/hall");
     } catch (error) {}
   };
+  const handleEnterQuizz = async(quizzId) => {
+    try {
+      await globalActions.addToSocket(io("http://localhost:3333/"));
+      globalState.socket.emit("enterQuizz", {
+        classId: 1,
+        userId: 3,
+        quizzId
+      })
+      history.push("/hall");
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const handleQuestions = async () => {
     try {
       const response = await api.get(`/question`);
@@ -93,8 +108,18 @@ function Home() {
       setQuestions(response.data);
     } catch (error) {}
   };
+  const handleQuizz = async () => {
+    try {
+      const response = await api.get(`/quizz`);
+
+      setQuizzs(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
     handleQuestions();
+    handleQuizz();
   }, []);
 
   const handleInput = (e) => {
@@ -173,12 +198,15 @@ function Home() {
             <MainFeed>
               <span>Em andamento</span>
               <TesteCima>
-                <CardHomeUp>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeUp>
+                {/* {quizzs.map((q) => ( */}
+                  <CardHomeUp>
+                    {/* <li>q.title</li> */}
+                    <ButtonEnterQuizz onClick={() => handleEnterQuizz(
+                      // q.id
+                    )}>ENTRAR</ButtonEnterQuizz>
+                  </CardHomeUp>
+                {/* ))} */}
+
                 <hr />
               </TesteCima>
               <span>Finalizados</span>

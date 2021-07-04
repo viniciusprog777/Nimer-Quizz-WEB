@@ -327,3 +327,16 @@ export const TesteBaixo = styled.div`
     font-size: 18px;
   }
 `;
+
+export const ButtonEnterQuizz = styled.button`
+  width: 250px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-size: 24px;
+  background-color: white;
+  font-weight: bold;
+  cursor: pointer;
+`;

@@ -37,7 +37,7 @@ function Login() {
       console.log(response.data.token);
       signIn(response.data);
 
-      history.push("/register");
+      history.push("/quizzs");
     } catch (error) {
       console.error(error);
     }

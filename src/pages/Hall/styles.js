@@ -185,7 +185,7 @@ export const TesteCima = styled.div`
 `;
 
 export const Footer = styled.div`
-  height: 150px;
+  height: 110px;
   width: 100vw;
   position: absolute;
   bottom: 0;
@@ -201,8 +201,8 @@ export const FooterBox = styled.div`
 `;
 
 export const CirculoFooter = styled.div`
-  height: 120px;
-  width: 120px;
+  height: 80px;
+  width: 80px;
   background-color: var(--light);
   border-radius: 100px;
   margin: 10px;
@@ -221,6 +221,7 @@ export const ButtonStartQuizz = styled.div`
   flex-direction: row;
   justify-content: center;
   font-size: 35px;
+  cursor: pointer;
 
   :hover {
     text-shadow: 2px 2px 5px var(--darkdark);
@@ -242,6 +243,7 @@ export const ButtonCancelQuizz = styled.div`
   flex-direction: row;
   justify-content: center;
   font-size: 35px;
+  cursor: pointer;
 
   :hover {
     text-shadow: 2px 2px 5px var(--darkdark);
@@ -258,6 +260,7 @@ export const CardHomeDown = styled.div`
   padding: 30px;
   align-items: center;
   display: flex;
+  margin-bottom: 250px;
   /* margin-left: 420px; */
   border-radius: 60px;
 `;

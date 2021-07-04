@@ -19,7 +19,7 @@ import { useGlobal } from "../../App";
 import { useHistory } from "react-router-dom";
 
 
-function LoadingProfStart() {
+function Hall() {
   const history = useHistory();
 
   const [show, setShow] = useState(false);
@@ -37,7 +37,7 @@ function LoadingProfStart() {
         userLevel: 2,
         quizzId: 14,
       })
-      history.push("/quizz")
+      history.push("/quizzes")
     } catch (error) {
       
     }
@@ -101,4 +101,4 @@ function LoadingProfStart() {
   );
 }
 
-export default LoadingProfStart;
+export default Hall;

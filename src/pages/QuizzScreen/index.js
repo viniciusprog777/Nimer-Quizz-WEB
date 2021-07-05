@@ -36,11 +36,11 @@ function QuizzScreen() {
   const handleSubmit = async (choiceId) => {
     try {
       choice = choiceId;
-      
+
       questions.nextQuestion.Quizzs.map((e) => {
         quizzId = e.id;
       });
-      questionId = questions.nextQuestion.id;
+
       globalState.socket.emit("answerQuizz", {
         userId: user.userId,
         choiceId,
@@ -52,33 +52,35 @@ function QuizzScreen() {
       console.log(error);
     }
   };
-  globalState.socket.on("answer", async() =>{
-    const cont = globalState.socket.emit("responsesQuant",{
+  globalState.socket.on("answer", async () => {
+    const cont = globalState.socket.emit("responsesQuant", {
       choiceId: choice,
-      quizzId
+      quizzId,
     });
     if (cont) {
       setShowNext(true);
       setShowQuestion(false);
       setQuestions(null);
     }
-     
-  })
+  });
   const handleQuestions = async () => {
     try {
       await globalState.socket.emit("nextQuestion", {
         userId: 2,
-        quizzId: 10,
+        quizzId: 6,
         questionId,
       });
-      await globalState.socket.on("resNextQuestion", (q) => {
-        setQuestions(q);
-        console.log(q);
-      });
+      setShowNext(true);
     } catch (error) {}
   };
+  globalState.socket.on("resNextQuestion", (q) => {
+    setShowQuestion(true);
+    setQuestions(q);
+    console.log(q);
+  });
   useEffect(() => {
     handleQuestions();
+    setShowNext(false);
   }, []);
 
   // const handleClick = (e) => {
@@ -102,28 +104,31 @@ function QuizzScreen() {
                         <span>{questions.nextQuestion.title}</span>
                       </NumberQuest>
                       <ListChoices>
-                        {user.userLevel === 3 && questions.choices.map((e) => (
-                          <ButtonChoices 
-                          onClick={() => handleSubmit(e.id)}
-                          >
-                            {e.description}
-                          </ButtonChoices>
-                        ))}
-                        {user.userLevel=== 2 && questions.choices.map((e) => (
-                          <ButtonChoices>
-                            {e.description}
-                          </ButtonChoices>
-                        ))}
+                        {user.userLevel === 3 &&
+                          questions.choices.map((e) => (
+                            <ButtonChoices onClick={() => handleSubmit(e.id)}>
+                              {e.description}
+                            </ButtonChoices>
+                          ))}
+                        {user.userLevel === 2 &&
+                          questions.choices.map((e) => (
+                            <ButtonChoices>{e.description}</ButtonChoices>
+                          ))}
                       </ListChoices>
                       <QuestionZZ></QuestionZZ>
                     </CardQuestion>
                   )}
-                  {!showQuestion && user.userLevel === 3 && <h1>Aguardando outros jogadores</h1>}
-                  {showNext && user.userLevel === 2 && <>
-                    <h1>Todos Responderam</h1>
-                    <button onClick={() => handleQuestions()}>Proxima Questão</button>
+                  {!showQuestion && !questions && user.userLevel === 3 && (
+                    <h1>Aguardando outros jogadores</h1>
+                  )}
+                  {showNext && user.userLevel === 2 && (
+                    <>
+                      <h1>Todos Responderam</h1>
+                      <button onClick={() => handleQuestions()}>
+                        Proxima Questão
+                      </button>
                     </>
-                  }
+                  )}
                 </CardHomeUp>
               </TesteCima>
               <Footer>

@@ -41,9 +41,9 @@ function Course() {
               <span>Turma</span>
               <hr />
               <h1>Recentes</h1>
-              <LabelMenu>Card Turmas Recentes</LabelMenu>
-              <LabelMenu>Card Turmas Recentes</LabelMenu>
-              <LabelMenu>Card Turmas Recentes</LabelMenu>
+              <LabelMenu>Elétrica</LabelMenu>
+              <LabelMenu>Construção Civil</LabelMenu>
+              <LabelMenu>Redes</LabelMenu>
             </MenuHg>
           </MenuContainer>
           <FeedContainer>
@@ -97,8 +97,7 @@ function Course() {
                   <li>teste</li>
                 </CardHomeUp>
 
-
-                <hr/>
+                <hr />
               </TesteCima>
 
               <TesteBaixo>
@@ -136,11 +135,7 @@ function Course() {
                   <li>teste</li>
                   <li>teste</li>
                 </CardHomeDown>
-
               </TesteBaixo>
-
-              
-              
             </MainFeed>
           </FeedContainer>
         </Content>

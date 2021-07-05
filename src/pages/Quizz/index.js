@@ -28,7 +28,7 @@ import {
   ChoiceCorrectCard,
   ButtonEnterQuizz,
 } from "./styles";
-import img from "../../assets/download.jpg"
+import img from "../../assets/download.jpg";
 import { useGlobal } from "../../App";
 import { api } from "../../services/api";
 import { useHistory } from "react-router-dom";
@@ -38,15 +38,16 @@ function Answer(answer) {
   console.log(answer);
   return (
     <>
-      {answer.choice.correct_option === true && 
-       <ChoiceCorrectCard>
-        <p>{answer.choice.description}</p>
-      </ChoiceCorrectCard>}
-      {answer.choice.correct_option === false && 
-       <ChoiceCard>
-        <p>{answer.choice.description}</p>
-      </ChoiceCard>}
-     
+      {answer.choice.correct_option === true && (
+        <ChoiceCorrectCard>
+          <p>{answer.choice.description}</p>
+        </ChoiceCorrectCard>
+      )}
+      {answer.choice.correct_option === false && (
+        <ChoiceCard>
+          <p>{answer.choice.description}</p>
+        </ChoiceCard>
+      )}
     </>
   );
 }
@@ -61,19 +62,17 @@ function Question(question) {
         <p>{question.question.title}</p>
       </QuestionCard>
 
-      {showAnswers && 
+      {showAnswers && (
         <ChoiceConteiner>
-          {question.question.Choices.map((m) => 
-            <Answer choice={m} />)}
+          {question.question.Choices.map((m) => (
+            <Answer choice={m} />
+          ))}
         </ChoiceConteiner>
-      }
-        
+      )}
     </>
   );
 }
-function Quizz(quizz) {
-  
-}
+function Quizz(quizz) {}
 
 function Home() {
   const history = useHistory();
@@ -114,7 +113,7 @@ function Home() {
       globalState.socket.emit("enterQuizz", {
         classId: 1,
         userId: user.userId,
-        quizzId: 10,
+        quizzId: 6,
       });
       history.push("/hall");
     } catch (error) {
@@ -143,7 +142,6 @@ function Home() {
     handleQuizz();
     handleQuestions();
     globalActions.addToSocket(io("http://localhost:3333/"));
-    
   }, []);
 
   const handleInput = (e) => {
@@ -163,11 +161,7 @@ function Home() {
         <Modal title="Criar Quizz" handleClose={() => setShowNewQuizz(false)}>
           <FormQuizz onSubmit={handleSubmit}>
             <label htmlFor="title">Nome:</label>
-            <input
-              id="title"
-              value={title.title}
-              onChange={handleInput}
-            />
+            <input id="title" value={title.title} onChange={handleInput} />
             <h1>Questões</h1>
             {questions.map((q) => (
               <Question question={q} />
@@ -193,9 +187,9 @@ function Home() {
               <span>Turma</span>
               <hr />
               <h1>Recentes</h1>
-              <LabelMenu>Card Turmas Recentes</LabelMenu>
-              <LabelMenu>Card Turmas Recentes</LabelMenu>
-              <LabelMenu>Card Turmas Recentes</LabelMenu>
+              <LabelMenu>Elétrica</LabelMenu>
+              <LabelMenu>Construção Civil</LabelMenu>
+              <LabelMenu>Redes</LabelMenu>
             </MenuHg>
           </MenuContainer>
           <FeedContainer>
@@ -218,47 +212,39 @@ function Home() {
             <MainFeed>
               <span>Em andamento</span>
               <TesteCima>
-                <CardHomeUp>
-                  <h1>Titulo</h1>
-                  <ButtonEnterQuizz onClick={() => handleEnterQuizz()}>
-                    Entrar
-                  </ButtonEnterQuizz>
-                </CardHomeUp>
-                {quizzs && quizzs.map((e) => {
-                  <Quizz></Quizz>
-                })}
-                  
+                {user.userLevel === 3 && (
+                  <CardHomeUp>
+                    <h1>Quizz Dst-3</h1>
+                    <ButtonEnterQuizz onClick={() => handleEnterQuizz()}>
+                      Entrar
+                    </ButtonEnterQuizz>
+                  </CardHomeUp>
+                )}
+
+                {quizzs &&
+                  quizzs.map((e) => {
+                    <Quizz></Quizz>;
+                  })}
+
                 <hr />
               </TesteCima>
               <span>Finalizados</span>
               <TesteBaixo>
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
+                <CardHomeUp>
+                  <h1>Quizz Redes</h1>
+                </CardHomeUp>
 
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
+                <CardHomeUp>
+                  <h1>Quizz Front</h1>
+                </CardHomeUp>
 
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
+                <CardHomeUp>
+                  <h1>Quizz Back</h1>
+                </CardHomeUp>
 
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
+                <CardHomeUp>
+                  <h1>Prova de Testes</h1>
+                </CardHomeUp>
               </TesteBaixo>
             </MainFeed>
           </FeedContainer>

@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import img from "../../assets/download.jpg"
-
+import img from "../../assets/download.jpg";
 
 export const Container = styled.div`
   width: 100vw;
@@ -104,6 +103,9 @@ export const MenuHg = styled.div`
 `;
 
 export const LabelMenu = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40px;
   width: calc(92%);
   margin-left: 10px;
@@ -112,6 +114,12 @@ export const LabelMenu = styled.div`
   background-color: var(--light);
 
   color: var(--darkdark);
+
+  :hover {
+    color: white;
+    background-color: var(--secondary);
+    cursor: pointer;
+  }
 `;
 export const FeedHome = styled.div`
   display: flex;
@@ -240,8 +248,7 @@ export const FormQuizz = styled.form`
     color: var(--light);
     border: none;
     font-weight: bold;
-   
-    
+
     cursor: pointer;
     transition: 0.2s;
 
@@ -249,7 +256,7 @@ export const FormQuizz = styled.form`
       box-shadow: 0px 0px 5px var(--darkShadow);
     }
   }
-  >label{
+  > label {
     font-size: 36px;
     margin-left: 10px;
     margin-top: 5px;
@@ -263,7 +270,7 @@ export const FormQuizz = styled.form`
     margin-left: 5px;
     margin-right: 5px;
   }
-  >h1{
+  > h1 {
     font-size: 36px;
     margin: 10px;
   }
@@ -284,6 +291,12 @@ export const QuestionCard = styled.div`
   flex-direction: row;
   background-color: var(--primary);
   color: white;
+  cursor: pointer;
+  transition: 0.2s;
+
+  :hover {
+    box-shadow: 0px 0px 5px var(--darkShadow);
+  }
 `;
 export const ChoiceConteiner = styled.div`
   width: 92%;
@@ -297,7 +310,6 @@ export const ChoiceConteiner = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 10px;
-
 `;
 export const ChoiceCard = styled.div`
   width: 90%;
@@ -377,7 +389,7 @@ export const CardHomeUp = styled.div`
     padding-top: 15px;
     color: var(--light);
   }
-  >h1{
+  > h1 {
     display: flex;
     justify-content: center;
     align-items: center;

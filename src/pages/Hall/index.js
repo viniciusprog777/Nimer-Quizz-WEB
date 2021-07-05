@@ -35,14 +35,14 @@ function Hall() {
       globalState.socket.emit("iniciateQuizz", {
         userId: 2,
         userLevel: 2,
-        quizzId: 10,
+        quizzId: 6,
       });
       history.push("/quizzes");
     } catch (error) {}
   };
-  globalState.socket.on("start", async() => {
+  globalState.socket.on("start", async () => {
     history.push("/quizzes");
-  })
+  });
   const handleClick = (e) => {
     e.preventDefault();
     setShow(!show);
@@ -81,7 +81,6 @@ function Hall() {
 
               <Footer>
                 <FooterBox>
-
                   <CirculoFooter></CirculoFooter>
                 </FooterBox>
               </Footer>

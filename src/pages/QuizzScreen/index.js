@@ -17,54 +17,70 @@ import {
   QuestionZZ,
   Footer,
   FooterBox,
-  CirculoFooter
-
+  CirculoFooter,
 } from "./styles";
+import { getUser, signOut, setUser } from "../../services/security";
 
 function QuizzScreen() {
   const [] = useState("");
   const [show, setShow] = useState(false);
   const [questions, setQuestions] = useState(null);
   const [globalState, globalActions] = useGlobal();
-
-  const [showQuestion, setShowQuestion] = useState(true)
+  const [showQuestion, setShowQuestion] = useState(true);
+  const [showNext, setShowNext] = useState(false);
+  const user = getUser();
+  let choice;
+  let quizzId;
+  let questionId = 0;
 
   const handleSubmit = async (choiceId) => {
     try {
-      let quizzId
-      questions.nextQuestion.Quizzs.map((e) => {quizzId = e.id});
-      globalState.socket.emit('answerQuizz', {
-        studentId: 1,
+      choice = choiceId;
+      
+      questions.nextQuestion.Quizzs.map((e) => {
+        quizzId = e.id;
+      });
+      questionId = questions.nextQuestion.id;
+      globalState.socket.emit("answerQuizz", {
+        userId: user.userId,
         choiceId,
-        quizzId
-      })
-      setShowQuestion(false)
-      setQuestions(null)       
+        quizzId,
+      });
+      setShowQuestion(false);
+      setQuestions(null);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-
+  };
+  globalState.socket.on("answer", async() =>{
+    const cont = globalState.socket.emit("responsesQuant",{
+      choiceId: choice,
+      quizzId
+    });
+    if (cont) {
+      setShowNext(true);
+      setShowQuestion(false);
+      setQuestions(null);
+    }
+     
+  })
   const handleQuestions = async () => {
     try {
-      await globalState.socket.emit('nextQuestion', {
+      await globalState.socket.emit("nextQuestion", {
         userId: 2,
-        quizzId: 1,
-        questionId: 0,
-      })
-      await globalState.socket.on('resNextQuestion', q => {
+        quizzId: 10,
+        questionId,
+      });
+      await globalState.socket.on("resNextQuestion", (q) => {
         setQuestions(q);
         console.log(q);
-      })
-
+      });
     } catch (error) {}
   };
   useEffect(() => {
-    globalActions.addToSocket(io("http://localhost:3333/"));
-    
     handleQuestions();
   }, []);
-  
+
   // const handleClick = (e) => {
   //   e.preventDefault();
   //   setShow(!show);
@@ -73,52 +89,54 @@ function QuizzScreen() {
   return (
     <>
       <Container>
-        <Header>
-        </Header>
+        <Header></Header>
         <Content>
           <FeedContainer>
             <MainFeed>
-              <button onClick={() => handleQuestions()}>Conexão</button>
               <TesteCima>
                 <CardHomeUp>
                   {showQuestion && questions && (
                     <CardQuestion>
                       <NumberQuest>
-                          <span>1- </span>
-                          <span>{questions.nextQuestion.title}</span>
+                        <span>1- </span>
+                        <span>{questions.nextQuestion.title}</span>
                       </NumberQuest>
-                            <ListChoices>
-                              {questions.choices.map((e) => (
-                                <ButtonChoices onClick={() => handleSubmit(e.id)}>{e.description}</ButtonChoices>
-                              ))}
-                            </ListChoices>
-                      <QuestionZZ>
-                      </QuestionZZ>
+                      <ListChoices>
+                        {user.userLevel === 3 && questions.choices.map((e) => (
+                          <ButtonChoices 
+                          onClick={() => handleSubmit(e.id)}
+                          >
+                            {e.description}
+                          </ButtonChoices>
+                        ))}
+                        {user.userLevel=== 2 && questions.choices.map((e) => (
+                          <ButtonChoices>
+                            {e.description}
+                          </ButtonChoices>
+                        ))}
+                      </ListChoices>
+                      <QuestionZZ></QuestionZZ>
                     </CardQuestion>
                   )}
-                  {!showQuestion && (
-                    <h1>Aguardando outros jogadores</h1>
-                  )}
+                  {!showQuestion && user.userLevel === 3 && <h1>Aguardando outros jogadores</h1>}
+                  {showNext && user.userLevel === 2 && <>
+                    <h1>Todos Responderam</h1>
+                    <button onClick={() => handleQuestions()}>Proxima Questão</button>
+                    </>
+                  }
                 </CardHomeUp>
               </TesteCima>
               <Footer>
-                  <FooterBox>
+                <FooterBox>
+                  <CirculoFooter>{/* A foto vem aqui */}</CirculoFooter>
 
-                      <CirculoFooter>
-                        {/* A foto vem aqui */}
-                      </CirculoFooter>
+                  <CirculoFooter></CirculoFooter>
 
-                      <CirculoFooter>
-                      </CirculoFooter>
+                  <CirculoFooter></CirculoFooter>
 
-                      <CirculoFooter>
-                      </CirculoFooter>
-
-                      <CirculoFooter>
-                      </CirculoFooter>
-                  </FooterBox>
+                  <CirculoFooter></CirculoFooter>
+                </FooterBox>
               </Footer>
-              
             </MainFeed>
           </FeedContainer>
         </Content>

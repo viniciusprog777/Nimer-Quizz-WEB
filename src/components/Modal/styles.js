@@ -18,12 +18,13 @@ export const ModalContainer = styled.section`
   min-height: 750px;
   max-height: calc(100vh - 20px);
   padding: 20px;
+  background-color: var(--primary);
 
   z-index: 19;
 
   overflow-y: auto;
 
-  background-color: var(--light);
+  /* background-color: var(--light); */
   box-shadow: 0px 0px 10px black;
   border-radius: 4px;
 
@@ -33,6 +34,7 @@ export const ModalContainer = styled.section`
     position: absolute;
     top: 15px;
     right: 20px;
+    color: white;
 
     font-size: 30px;
 
@@ -48,6 +50,8 @@ export const ModalContainer = styled.section`
     font-weight: bold;
     font-size: 24px;
     text-align: center;
+    color: white;
     margin: 0px 20px;
+    margin-bottom: 10px;
   }
 `;

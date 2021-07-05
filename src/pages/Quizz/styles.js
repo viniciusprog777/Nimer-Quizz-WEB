@@ -1,4 +1,6 @@
 import styled, { keyframes } from "styled-components";
+import img from "../../assets/download.jpg"
+
 
 export const Container = styled.div`
   width: 100vw;
@@ -26,11 +28,12 @@ export const Header = styled.header`
 export const ProfilePic = styled.img`
   width: 50px;
   height: 50px;
-  position: right;
-  display: right;
+  position: absolute;
+  display: flex;
+  right: 0;
 
   margin: 20px;
-  margin-left: 1250px;
+
   margin-top: 5px;
   border-radius: 30px;
   /* border: 2px solid var(--darkdark); */
@@ -218,6 +221,7 @@ export const FormQuizz = styled.form`
   flex-direction: column;
   gap: 10px;
   border: 1px solid black;
+  background-color: white;
 
   > button {
     position: relative;
@@ -228,27 +232,104 @@ export const FormQuizz = styled.form`
     display: flex;
     align-self: flex-end;
     margin-right: 20px;
+    margin-bottom: 10px;
     align-items: center;
     justify-content: center;
+    background-color: var(--secondary);
+    padding: 10px;
+    color: var(--light);
+    border: none;
+    font-weight: bold;
+   
+    
+    cursor: pointer;
+    transition: 0.2s;
+
+    :hover {
+      box-shadow: 0px 0px 5px var(--darkShadow);
+    }
+  }
+  >label{
+    font-size: 36px;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  > input {
+    height: 60px;
+    font-size: 24px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  >h1{
+    font-size: 36px;
+    margin: 10px;
   }
 `;
 export const QuestionCard = styled.div`
-  width: 90%;
-  height: 50px;
+  width: 95%;
+  min-height: 50px;
+  height: auto;
+  overflow: hidden;
   display: flex;
   align-self: center;
-  border: 1px solid black;
-  margin-bottom: 10px;
-  flex-direction: row;
-`;
-export const ChoiceCard = styled.div`
-  width: 80%;
-  height: 20px;
-  display: flex;
-  align-self: center;
+  align-items: center;
+  font-size: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
   border: 1px solid black;
   margin-bottom: 5px;
   flex-direction: row;
+  background-color: var(--primary);
+  color: white;
+`;
+export const ChoiceConteiner = styled.div`
+  width: 92%;
+  min-height: 50px;
+  height: auto;
+  overflow: hidden;
+  background-color: #768891;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+
+`;
+export const ChoiceCard = styled.div`
+  width: 90%;
+  min-height: 35px;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  font-size: 16px;
+  padding-left: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  flex-direction: row;
+  color: white;
+  background-color: #f02b11;
+`;
+export const ChoiceCorrectCard = styled.div`
+  width: 90%;
+  min-height: 35px;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  font-size: 16px;
+  padding-left: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  flex-direction: row;
+  color: white;
+  background-color: #278a30;
 `;
 
 export const MainFeed = styled.div`
@@ -276,9 +357,18 @@ export const MainFeed = styled.div`
 export const CardHomeUp = styled.div`
   width: 250px;
   height: 350px;
-  background-color: var(--primary);
+  /* background-color: var(--primary); */
+  background-image: url(${img});
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
   margin-top: 15px;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
 
   > li {
     font-size: 28px;
@@ -286,6 +376,19 @@ export const CardHomeUp = styled.div`
     margin-left: 25px;
     padding-top: 15px;
     color: var(--light);
+  }
+  >h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--light);
+  }
+  > img {
+    width: 100%;
+    height: 250px;
+    margin: 0;
+    /* z-index: -1; */
+    background-size: contain;
   }
 `;
 

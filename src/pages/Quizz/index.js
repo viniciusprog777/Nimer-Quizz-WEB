@@ -23,20 +23,30 @@ import {
   CardHomeDown,
   TesteCima,
   TesteBaixo,
+  ChoiceConteiner,
   ChoiceCard,
-  ButtonEnterQuizz
+  ChoiceCorrectCard,
+  ButtonEnterQuizz,
 } from "./styles";
+import img from "../../assets/download.jpg"
 import { useGlobal } from "../../App";
 import { api } from "../../services/api";
 import { useHistory } from "react-router-dom";
+import { getUser, signOut, setUser } from "../../services/security";
 
 function Answer(answer) {
   console.log(answer);
   return (
     <>
-      <ChoiceCard>
+      {answer.choice.correct_option === true && 
+       <ChoiceCorrectCard>
         <p>{answer.choice.description}</p>
-      </ChoiceCard>
+      </ChoiceCorrectCard>}
+      {answer.choice.correct_option === false && 
+       <ChoiceCard>
+        <p>{answer.choice.description}</p>
+      </ChoiceCard>}
+     
     </>
   );
 }
@@ -51,27 +61,40 @@ function Question(question) {
         <p>{question.question.title}</p>
       </QuestionCard>
 
-      {showAnswers &&
-        question.question.Choices.map((m) => <Answer choice={m} />)}
+      {showAnswers && 
+        <ChoiceConteiner>
+          {question.question.Choices.map((m) => 
+            <Answer choice={m} />)}
+        </ChoiceConteiner>
+      }
+        
     </>
   );
+}
+function Quizz(quizz) {
+  
 }
 
 function Home() {
   const history = useHistory();
+
   const [questions, setQuestions] = useState();
   const [quizzs, setQuizzs] = useState();
   const [show, setShow] = useState(false);
   const [showNewQuizz, setShowNewQuizz] = useState(false);
   const [globalState, globalActions] = useGlobal();
+
+  const user = getUser();
+
   const [title, setTitle] = useState({
     title: "",
   });
+
   const handleSubmit = async () => {
     try {
       globalState.socket.emit("prepareQuizz", {
-        userId: 2,
-        userLevel: 2,
+        userId: user.userId,
+        userLevel: user.userLevel,
         title: title.title,
         classId: 1,
         questions: [
@@ -86,19 +109,18 @@ function Home() {
       history.push("/hall");
     } catch (error) {}
   };
-  const handleEnterQuizz = async(quizzId) => {
+  const handleEnterQuizz = async (quizzId) => {
     try {
-      await globalActions.addToSocket(io("http://localhost:3333/"));
       globalState.socket.emit("enterQuizz", {
         classId: 1,
-        userId: 3,
-        quizzId
-      })
+        userId: user.userId,
+        quizzId: 10,
+      });
       history.push("/hall");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   const handleQuestions = async () => {
     try {
       const response = await api.get(`/question`);
@@ -110,16 +132,18 @@ function Home() {
   };
   const handleQuizz = async () => {
     try {
-      const response = await api.get(`/quizz`);
+      const response = await api.get(`/quizz/1`);
 
       setQuizzs(response.data);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
   useEffect(() => {
-    handleQuestions();
     handleQuizz();
+    handleQuestions();
+    globalActions.addToSocket(io("http://localhost:3333/"));
+    
   }, []);
 
   const handleInput = (e) => {
@@ -128,14 +152,9 @@ function Home() {
 
   const handleNewQuizz = (e) => {
     setShowNewQuizz(true);
-    //handleQuestions();
+    handleQuestions();
     console.log(questions);
     globalActions.addToSocket(io("http://localhost:3333/"));
-  };
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    setShow(!show);
   };
 
   return (
@@ -143,10 +162,9 @@ function Home() {
       {showNewQuizz && (
         <Modal title="Criar Quizz" handleClose={() => setShowNewQuizz(false)}>
           <FormQuizz onSubmit={handleSubmit}>
-            <label htmlFor="title">Titulo</label>
+            <label htmlFor="title">Nome:</label>
             <input
               id="title"
-              placeholder="Digite um email"
               value={title.title}
               onChange={handleInput}
             />
@@ -191,22 +209,25 @@ function Home() {
                 <li>Alunos</li>
                 <li>Gráficos</li>
               </SubMenus>
-              <ButtonCreateQuizz onClick={() => handleNewQuizz()}>
-                Criar Quizz
-              </ButtonCreateQuizz>
+              {user.userLevel === 2 && (
+                <ButtonCreateQuizz onClick={() => handleNewQuizz()}>
+                  Criar Quizz
+                </ButtonCreateQuizz>
+              )}
             </HeaderFeed>
             <MainFeed>
               <span>Em andamento</span>
               <TesteCima>
-                {/* {quizzs.map((q) => ( */}
-                  <CardHomeUp>
-                    {/* <li>q.title</li> */}
-                    <ButtonEnterQuizz onClick={() => handleEnterQuizz(
-                      // q.id
-                    )}>ENTRAR</ButtonEnterQuizz>
-                  </CardHomeUp>
-                {/* ))} */}
-
+                <CardHomeUp>
+                  <h1>Titulo</h1>
+                  <ButtonEnterQuizz onClick={() => handleEnterQuizz()}>
+                    Entrar
+                  </ButtonEnterQuizz>
+                </CardHomeUp>
+                {quizzs && quizzs.map((e) => {
+                  <Quizz></Quizz>
+                })}
+                  
                 <hr />
               </TesteCima>
               <span>Finalizados</span>

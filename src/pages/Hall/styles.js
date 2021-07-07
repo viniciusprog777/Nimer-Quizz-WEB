@@ -1,4 +1,7 @@
 import styled, { keyframes } from "styled-components";
+import imgProfile from "../../assets/perfil.jpg";
+import imgProfile02 from "../../assets/perfil02.jpg";
+
 
 export const Container = styled.div`
   width: 100vw;
@@ -203,7 +206,17 @@ export const FooterBox = styled.div`
 export const CirculoFooter = styled.div`
   height: 80px;
   width: 80px;
-  background-color: var(--light);
+  background-image: url(${imgProfile});
+  background-size: contain;
+  border-radius: 100px;
+  margin: 10px;
+`;
+
+export const CirculoFooter02 = styled.div`
+  height: 80px;
+  width: 80px;
+  background-image: url(${imgProfile02});
+  background-size: cover;
   border-radius: 100px;
   margin: 10px;
 `;

@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import imgProfile from "../../assets/perfil.jpg";
 
 export const Container = styled.div`
   width: 100vw;
@@ -26,14 +27,17 @@ export const Header = styled.header`
 export const ProfilePic = styled.img`
   width: 50px;
   height: 50px;
-  position: fiexd;
+  position: absolute;
+  right: 0;
 
   margin: 20px;
   margin-left: 1250px;
   margin-top: 5px;
   border-radius: 30px;
   /* border: 2px solid var(--darkdark); */
-  background-color: var(--light);
+  background-image: url(${imgProfile});
+  background-size: contain;
+
 
   box-shadow: 0px 0px 5px var(--darkdark);
 
@@ -104,6 +108,9 @@ export const LabelMenu = styled.div`
   width: calc(92%);
   margin-left: 10px;
   margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
   background-color: var(--light);
 
@@ -242,14 +249,22 @@ export const CardHomeUp = styled.div`
   margin:10px;
   align-items: center;
   display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.2s;
   
 
 
   > h1 {
     font-size: 35px;
-    margin-left:25px;
     color: var(--light);
-    margin-left:50px;
+  } 
+  >img{
+    width: 140px;
+    height: 120px;
+    margin-bottom: 10px;
   }
 
   :hover{

@@ -10,6 +10,8 @@ import QuizzScreen from "./pages/QuizzScreen";
 import Quizz from "./pages/Quizz";
 import Register from "./pages/Register";
 import { isSignedIn } from "./services/security";
+import WaitingStud from "./pages/WaitingStud";
+import Result from "./pages/ResultT";
 
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {
@@ -57,6 +59,12 @@ function Router() {
         </PrivateRoute>
         <PrivateRoute path="/quizzes">
           <QuizzScreen/>
+        </PrivateRoute>
+        <PrivateRoute path="/wait">
+          <WaitingStud/>
+        </PrivateRoute>
+        <PrivateRoute path="/result">
+          <Result/>
         </PrivateRoute>
       </Switch>
     </BrowserRouter>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import {
   Container,
   Header,
@@ -18,6 +19,8 @@ import {
   TesteCima,
   TesteBaixo,
 } from "./styles";
+import curso01 from "../../assets/curso.jpg"
+import curso02 from "../../assets/curso02.jpg"
 
 function Course() {
   const [] = useState("");
@@ -47,7 +50,7 @@ function Course() {
             </MenuHg>
           </MenuContainer>
           <FeedContainer>
-            <HeaderFeed>
+            {/* <HeaderFeed>
               <QuadradinhoLogo>
                 <h1>TE</h1>
               </QuadradinhoLogo>
@@ -57,85 +60,27 @@ function Course() {
                 <li>Alunos</li>
                 <li>Gráficos</li>
               </SubMenus>
-              <ButtonCreateQuizz>Criar Quizz</ButtonCreateQuizz>
-            </HeaderFeed>
+               <ButtonCreateQuizz>Criar Turma</ButtonCreateQuizz> 
+            </HeaderFeed> */}
             <MainFeed>
               <span>Cursos</span>
               <TesteCima>
+                <Link to="/class">
                 <CardHomeUp>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
+                <img src={curso02} alt="Foto do Curso"/>
+                  <h1>Android - Kotlin</h1>
                 </CardHomeUp>
-
+                </Link>
+                <Link to="/class">
                 <CardHomeUp>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
+                 
+                  <img src={curso01} alt="Foto do Curso"/>
+                  <h1>Desenvolvimento Web</h1>
                 </CardHomeUp>
-
-                <CardHomeUp>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeUp>
-
-                <CardHomeUp>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeUp>
-
-                <CardHomeUp>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeUp>
+                </Link>
 
                 <hr />
               </TesteCima>
-
-              <TesteBaixo>
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
-
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
-
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
-
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
-
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
-              </TesteBaixo>
             </MainFeed>
           </FeedContainer>
         </Content>

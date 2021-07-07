@@ -1,4 +1,6 @@
 import styled, { keyframes } from "styled-components";
+import imgProfile from "../../assets/perfil.jpg";
+
 
 export const Container = styled.div`
   width: 100vw;
@@ -26,14 +28,16 @@ export const Header = styled.header`
 export const ProfilePic = styled.img`
   width: 50px;
   height: 50px;
-  position: fiexd;
+  position: absolute;
+  right: 0;
 
   margin: 20px;
   margin-left: 1250px;
   margin-top: 5px;
   border-radius: 30px;
   /* border: 2px solid var(--darkdark); */
-  background-color: var(--light);
+  background-image: url(${imgProfile});
+  background-size: contain;
 
   box-shadow: 0px 0px 5px var(--darkdark);
 
@@ -224,7 +228,7 @@ export const MainFeed = styled.div`
   padding:50px;
   
   > span {
-    font-size:20px;
+    font-size:32px;
     margin-bottom: 10px;
     color: var(--darkdark);
 
@@ -235,20 +239,36 @@ export const MainFeed = styled.div`
 `;
 
 export const CardHomeUp = styled.div`
-  width: 200px;
-  height: 190px;
+  width: 300px;
+  height: 230px;
   background-color: var(--primary);
   margin-top:15px;
   margin:10px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  transition: 0.2s;
 
-
-  > li {
-    font-size: 28px;
-    list-style-type: none;
-    margin-left:25px;
-    padding-top:15px;
-    color: var(--light);
+  :hover{
+    transform: scale(1.1);
   }
+  img{
+    width: 190px;
+    height: 140px;
+    display: flex;
+    margin-bottom: 10px;
+  }
+  h1{
+    color: white;
+    display: flex;
+    align-content: center;
+    font-size: 26px;
+    text-decoration: none;
+  }
+  
 `;
 
 export const CardHomeDown = styled.div`

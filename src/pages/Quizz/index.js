@@ -28,7 +28,8 @@ import {
   ChoiceCorrectCard,
   ButtonEnterQuizz,
 } from "./styles";
-import img from "../../assets/download.jpg";
+
+
 import { useGlobal } from "../../App";
 import { api } from "../../services/api";
 import { useHistory } from "react-router-dom";
@@ -113,7 +114,7 @@ function Home() {
       globalState.socket.emit("enterQuizz", {
         classId: 1,
         userId: user.userId,
-        quizzId: 6,
+        quizzId: 42,
       });
       history.push("/hall");
     } catch (error) {
@@ -178,7 +179,8 @@ function Home() {
       )}
       <Container>
         <Header>
-          <ProfilePic />
+          <ProfilePic >
+          </ProfilePic>
         </Header>
         <Content>
           <MenuContainer>
@@ -210,7 +212,7 @@ function Home() {
               )}
             </HeaderFeed>
             <MainFeed>
-              <span>Em andamento</span>
+              {/* <span>Em andamento</span> */}
               <TesteCima>
                 {user.userLevel === 3 && (
                   <CardHomeUp>

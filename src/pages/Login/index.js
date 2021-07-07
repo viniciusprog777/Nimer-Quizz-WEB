@@ -29,7 +29,7 @@ function Login() {
       console.log(response.data.token);
       signIn(response.data);
 
-      history.push("/quizzs");
+      history.push("/course");
     } catch (error) {
       console.error(error);
     }
@@ -88,8 +88,10 @@ function Login() {
         <h4>Não tenho conta!</h4>
 
         <button>
-          {" "}
-          <Link to="/register"> Cadastrar</Link>
+         
+          <Link to="/register">
+            Cadastrar
+            </Link>
         </button>
       </div>
     </div>

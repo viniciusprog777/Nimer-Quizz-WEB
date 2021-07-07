@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import img from "../../assets/download.jpg";
+import imgProfile from "../../assets/perfil.jpg";
+
 
 export const Container = styled.div`
   width: 100vw;
@@ -36,12 +38,14 @@ export const ProfilePic = styled.img`
   margin-top: 5px;
   border-radius: 30px;
   /* border: 2px solid var(--darkdark); */
-  background-color: var(--light);
+  background-image: url(${imgProfile});
+  background-size: contain;
 
   box-shadow: 0px 0px 5px var(--darkdark);
 
   cursor: pointer;
   transition: 0.2s;
+  
 
   :hover {
     transform: scale(1.1);

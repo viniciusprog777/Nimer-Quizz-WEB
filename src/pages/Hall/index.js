@@ -14,6 +14,7 @@ import {
   ButtonStartQuizz,
   CardHomeDown,
   ButtonCancelQuizz,
+  CirculoFooter02
 } from "./styles";
 import { useGlobal } from "../../App";
 import { useHistory } from "react-router-dom";
@@ -35,7 +36,7 @@ function Hall() {
       globalState.socket.emit("iniciateQuizz", {
         userId: 2,
         userLevel: 2,
-        quizzId: 6,
+        quizzId: 42,
       });
       history.push("/quizzes");
     } catch (error) {}
@@ -82,6 +83,7 @@ function Hall() {
               <Footer>
                 <FooterBox>
                   <CirculoFooter></CirculoFooter>
+                  {user.userLevel === 3 && <CirculoFooter02></CirculoFooter02>}
                 </FooterBox>
               </Footer>
             </MainFeed>

@@ -145,7 +145,12 @@ function Register() {
         </div>
 
         <button type="submit">Cadastrar</button>
-        <button>{/* <Link to="/"> Entrar</Link> */}</button>
+        <button>
+         {/* <Link to="/">  */}
+        Entrar
+        {/* </Link>  */}
+        
+        </button>
       </form>
     </div>
   );

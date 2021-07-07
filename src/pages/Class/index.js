@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import {
   Container,
   Header,
@@ -18,6 +19,7 @@ import {
   TesteCima,
   TesteBaixo,
 } from "./styles";
+import turma01 from "../../assets/turma.jpg"
 
 function Class() {
   const [] = useState("");
@@ -41,9 +43,9 @@ function Class() {
               <span>Turma</span>
               <hr />
               <h1>Recentes</h1>
-              <LabelMenu>Card Turmas Recentes</LabelMenu>
-              <LabelMenu>Card Turmas Recentes</LabelMenu>
-              <LabelMenu>Card Turmas Recentes</LabelMenu>
+              <LabelMenu>Mobile - Kotlin</LabelMenu>
+              {/* <LabelMenu>Card Turmas Recentes</LabelMenu>
+              <LabelMenu>Card Turmas Recentes</LabelMenu> */}
             </MenuHg>
           </MenuContainer>
           <FeedContainer>
@@ -51,81 +53,37 @@ function Class() {
               <QuadradinhoLogo>
                 <h1>TE</h1>
               </QuadradinhoLogo>
-              <h1>Turma TCC</h1>
+              <h1>Desenvolvimento Web</h1>
               <SubMenus>
                 <li>Home</li>
                 <li>Alunos</li>
                 <li>Gráficos</li>
               </SubMenus>
-              <ButtonCreateQuizz>Criar Quizz</ButtonCreateQuizz>
+              <ButtonCreateQuizz>Criar Turma</ButtonCreateQuizz>
             </HeaderFeed>
             <MainFeed>
               <span>Cursos</span>
               <TesteCima>
-                <CardHomeUp>
-                  <h1>DS2T</h1>
-                </CardHomeUp>
+                <Link to="/quizzs">
+                  <CardHomeUp>
+                    <h1>DS1T</h1>
+                  </CardHomeUp>
+                </Link>
 
-                <CardHomeUp>
-                  <h1>DS3T</h1>
-                </CardHomeUp>
+                <Link to="/quizzs">
+                  <CardHomeUp>
+                    <h1>DS2T</h1>
+                  </CardHomeUp>
+                </Link>
 
-                <CardHomeUp>
-                  <h1>DS1M</h1>
-                </CardHomeUp>
-
-                <CardHomeUp>
-                  <h1>DS2M</h1>
-                </CardHomeUp>
-
-                <CardHomeUp>
-                  <h1>DS3M</h1>
-                </CardHomeUp>
-
-
+                <Link to="quizzs">
+                  <CardHomeUp>
+                    <img src={turma01} alt="Foto da Turma"/>
+                    <h1>DS3M</h1>
+                  </CardHomeUp>
+                </Link>
                 <hr/>
               </TesteCima>
-
-              {/* <TesteBaixo>
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
-
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
-
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
-
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
-
-                <CardHomeDown>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                  <li>teste</li>
-                </CardHomeDown>
-
-              </TesteBaixo> */}
-
-              
-              
             </MainFeed>
           </FeedContainer>
         </Content>

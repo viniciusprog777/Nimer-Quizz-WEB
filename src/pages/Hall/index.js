@@ -26,17 +26,13 @@ function Hall() {
   const [show, setShow] = useState(false);
   const [globalState, globalActions] = useGlobal();
   const user = getUser();
-  const level = 1;
-
-  // useEffect(() => {
-  // }, [globalState.socket.rooms.size]);
 
   const handleSubmit = () => {
     try {
       globalState.socket.emit("iniciateQuizz", {
         userId: 2,
         userLevel: 2,
-        quizzId: 42,
+        quizzId: 47,
       });
       history.push("/quizzes");
     } catch (error) {}

@@ -3,6 +3,7 @@ import Modal from "../../components/Modal";
 import Input from "../../components/Input";
 import { io } from "socket.io-client";
 
+
 import {
   Container,
   Header,
@@ -32,7 +33,7 @@ import {
 
 import { useGlobal } from "../../App";
 import { api } from "../../services/api";
-import { useHistory } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import { getUser, signOut, setUser } from "../../services/security";
 
 function Answer(answer) {
@@ -73,13 +74,12 @@ function Question(question) {
     </>
   );
 }
-function Quizz(quizz) {}
 
 function Home() {
   const history = useHistory();
 
   const [questions, setQuestions] = useState();
-  const [quizzs, setQuizzs] = useState();
+  const [quizzs, setQuizzs] = useState(null);
   const [show, setShow] = useState(false);
   const [showNewQuizz, setShowNewQuizz] = useState(false);
   const [globalState, globalActions] = useGlobal();
@@ -96,13 +96,10 @@ function Home() {
         userId: user.userId,
         userLevel: user.userLevel,
         title: title.title,
-        classId: 1,
+        classId: globalState.classId,
         questions: [
           {
             id: 1,
-          },
-          {
-            id: 2,
           },
         ],
       });
@@ -112,9 +109,9 @@ function Home() {
   const handleEnterQuizz = async (quizzId) => {
     try {
       globalState.socket.emit("enterQuizz", {
-        classId: 1,
+        classId: globalState.classId,
         userId: user.userId,
-        quizzId: 42,
+        quizzId,
       });
       history.push("/hall");
     } catch (error) {
@@ -124,17 +121,17 @@ function Home() {
   const handleQuestions = async () => {
     try {
       const response = await api.get(`/question`);
-
-      console.log(response.data);
-
       setQuestions(response.data);
     } catch (error) {}
   };
   const handleQuizz = async () => {
     try {
-      const response = await api.get(`/quizz/1`);
+      const response = await api.get(`/quizz/${globalState.classId}`);
 
       setQuizzs(response.data);
+      response.data.map((e) => {
+        console.log(e.title);
+      })
     } catch (error) {
       console.log(error);
     }
@@ -142,7 +139,7 @@ function Home() {
   useEffect(() => {
     handleQuizz();
     handleQuestions();
-    globalActions.addToSocket(io("http://localhost:3333/"));
+    globalActions.addToSocket(io(process.env.REACT_APP_API_HOST));
   }, []);
 
   const handleInput = (e) => {
@@ -153,7 +150,7 @@ function Home() {
     setShowNewQuizz(true);
     handleQuestions();
     console.log(questions);
-    globalActions.addToSocket(io("http://localhost:3333/"));
+    globalActions.addToSocket(io(process.env.REACT_APP_API_HOST));
   };
 
   return (
@@ -185,8 +182,13 @@ function Home() {
         <Content>
           <MenuContainer>
             <MenuHg>
-              <span>Cursos</span>
-              <span>Turma</span>
+              
+              
+                <span><Link to="/course">Cursos </Link></span>
+             
+              
+                <span><Link to="/class">Turma</Link></span>
+              
               <hr />
               <h1>Recentes</h1>
               <LabelMenu>Elétrica</LabelMenu>
@@ -212,41 +214,32 @@ function Home() {
               )}
             </HeaderFeed>
             <MainFeed>
-              {/* <span>Em andamento</span> */}
+              <span>Em andamento</span>
               <TesteCima>
-                {user.userLevel === 3 && (
-                  <CardHomeUp>
-                    <h1>Quizz Dst-3</h1>
-                    <ButtonEnterQuizz onClick={() => handleEnterQuizz()}>
-                      Entrar
-                    </ButtonEnterQuizz>
-                  </CardHomeUp>
-                )}
-
                 {quizzs &&
-                  quizzs.map((e) => {
-                    <Quizz></Quizz>;
-                  })}
+                  quizzs.map((e) => (
+                    <CardHomeUp>
+                    <h1>{e.title}</h1>
+                    {e.status_quizz === "Em Preparação" && user.userLevel === 3 &&
+                    <ButtonEnterQuizz onClick={() => handleEnterQuizz(e.id)}>
+                      Entrar
+                    </ButtonEnterQuizz>}
+                    
+                  </CardHomeUp>
+                  ))}
 
                 <hr />
               </TesteCima>
               <span>Finalizados</span>
               <TesteBaixo>
-                <CardHomeUp>
-                  <h1>Quizz Redes</h1>
-                </CardHomeUp>
-
-                <CardHomeUp>
-                  <h1>Quizz Front</h1>
-                </CardHomeUp>
-
-                <CardHomeUp>
-                  <h1>Quizz Back</h1>
-                </CardHomeUp>
-
-                <CardHomeUp>
-                  <h1>Prova de Testes</h1>
-                </CardHomeUp>
+              {quizzs &&
+                  quizzs.map((e) => {
+                    {e.status_quizz === "Finalizado" &&  
+                    <CardHomeUp>
+                    <h1>{e.title}</h1>
+                  </CardHomeUp>}
+                   
+              })}
               </TesteBaixo>
             </MainFeed>
           </FeedContainer>

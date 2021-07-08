@@ -264,7 +264,10 @@ export const CardHomeUp = styled.div`
   h1{
     color: white;
     display: flex;
+    
     align-content: center;
+    
+    text-align: center;
     font-size: 26px;
     text-decoration: none;
   }

@@ -16,16 +16,29 @@ import {
   CardTeste,
   ButtonReturn,
 } from "./styles";
+import { useGlobal } from "../../App";
+import { useHistory } from "react-router-dom";
+import { getUser, signOut, setUser } from "../../services/security";
+
 
 function Result() {
-  const [] = useState("");
-  const [show, setShow] = useState(false);
+  const [globalState, globalActions] = useGlobal();
+  const history = useHistory();
+  const user = getUser();
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    setShow(!show);
-  };
 
+  const handleOut = () =>{
+    globalState.socket.emit("quitQuizz", 47);
+    history.push("/quizzs");
+  }
+  const handleResult = () =>{
+    globalState.socket.emit("showResultAll")
+    globalState.socket.emit("showResult")
+
+  }
+  useEffect(() =>{
+
+  }, [])
   return (
     <>
       <Container>
@@ -43,9 +56,12 @@ function Result() {
                   <h1>Destaque da partida: Roberto Alvez</h1>
                   <h1>"Lista de alunos talvez"</h1>
 
-                  <ButtonReturn>Voltar/Sair</ButtonReturn>
+                  <ButtonReturn onClick={() => handleOut()}>Sair</ButtonReturn>
                   </CardTeste>
-                  <Footer>
+                 
+                </CardHomeUp>
+              </TesteCima>
+               <Footer>
                   <FooterBox>
 
                       <CirculoFooter>
@@ -62,8 +78,6 @@ function Result() {
                       </CirculoFooter>
                   </FooterBox>
               </Footer>
-                </CardHomeUp>
-              </TesteCima>
               
             </MainFeed>
           </FeedContainer>

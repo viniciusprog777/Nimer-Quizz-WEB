@@ -76,12 +76,16 @@ export const MenuHg = styled.div`
   flex-direction: column;
   align-items: center;
 
+  > Link {
+    text-decoration: none;
+  }
   > span {
     cursor: pointer;
     width: 95%;
     padding: 10px;
     font-size: 20px;
     margin-top: 10px;
+    color: white;
 
     transition: 0.2s;
 

@@ -17,6 +17,7 @@ export const Header = styled.header`
   justify-content: space-between;
   background-color: var(--primary);
   box-shadow: 0px 2px 5px var(--darkShadow);
+
 `;
 export const FeedHome = styled.div`
   display: flex;
@@ -31,8 +32,7 @@ export const FeedHome = styled.div`
 export const Content = styled.div`
   width: 100%;
   padding-top: 60px;
-  display: grid;
-  grid-template-columns: 200px calc(100% - 200px);
+ 
 `;
 
 export const FeedContainer = styled.div`
@@ -55,11 +55,12 @@ export const HeaderFeed = styled.div`
 
 
 export const MainFeed = styled.div`
-  width: 100hv;
+  width: 100vw;
   height: 94%;
   background-color: var(--light);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
   padding:50px;
   
@@ -74,13 +75,13 @@ export const MainFeed = styled.div`
 `;
 
 export const CardHomeUp = styled.div`
-  width: 1000px;
-  height: 850px;
+  width: 800px;
+  height: 500px;
   background-color: var(--primary);
   margin:10px;
-  margin-left: 160px;
-  border-radius: 60px;
   padding: 15px;
+  display: flex;
+  justify-content: center;
   flex-direction: column;
   color: var(--light);
   font-size: 20px;
@@ -110,11 +111,12 @@ margin-bottom:20px;
 
 export const Footer = styled.div`
 height: 150px;
-width: 970px;
+width: 100vw;
 background-color: var(--secondary);
 display: flex;
+position: fixed;
+bottom: 0;
 margin-top: 150px;
-border-radius: 50px;
 `;
 
 export const FooterBox = styled.div`
@@ -137,17 +139,20 @@ export const CardHomeDown = styled.div`
   background-color: var(--primary);
   margin:30px;
   padding: 30px;
-  align-items: center;
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: 420px;
   border-radius: 60px; 
 `;
 
 export const CardTeste = styled.div`
-width: 970px;
+width: 700px;
 height: 400px;
 background-color: var(--secondary);
-border-radius: 60px;
+display: flex;
+align-self: center;
+flex-direction: column;
 color: var(--light);
 padding: 25px;
 >h1{
@@ -156,20 +161,17 @@ padding: 25px;
 `;
 
 export const ButtonReturn = styled.div`
-height: 50px;
+width: 180px;
+height: 220px;
 display: flex;
+align-self: flex-end;
 justify-content: center;
 margin-top: 50px;
-width: 100%;
 font-size: 35px;
-color: var(--secondary);
-border-radius: 60px;
-background-color: var(--light);
-box-shadow: 0 0 0 0;
+background-color: red;
 :hover {
-  background-color: var(--secondary2);
   color: var(--light);
   cursor: pointer;
-  
+  box-shadow: 0px 0px 5px var(--darkShadow);
 }
 `;

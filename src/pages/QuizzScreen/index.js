@@ -71,7 +71,7 @@ function QuizzScreen() {
     try {
       await globalState.socket.emit("nextQuestion", {
         userId: 2,
-        quizzId: 42,
+        quizzId: 47,
         questionId,
       });
       setShowNext(false);
@@ -96,6 +96,15 @@ function QuizzScreen() {
   globalState.socket.on("resNoQuestion", async() => {
     history.push("/result");
   });
+  const handleResult = async ()=>{
+    await globalState.socket.emit("fakeResult", 47);
+    history.push("/result");
+  };
+  // const handleR = async ()=>{
+  globalState.socket.on("fake", async() => {
+    history.push("/result");
+  });
+// }
   
   useEffect(async () => {
     await handleQuestions();
@@ -143,7 +152,7 @@ function QuizzScreen() {
                   {showNext && user.userLevel === 2 && (
                     <>
                       <h1>Todos Responderam</h1>
-                      <button onClick={() => handleQuestions()}>
+                      <button onClick={() => handleResult()}>
                         Proxima Questão
                       </button>
                     </>

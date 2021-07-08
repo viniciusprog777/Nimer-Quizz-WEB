@@ -312,4 +312,55 @@ align-items: flex-start;
 font-size:18px;
 }
 `;
+export const FormClass = styled.form`
+  min-width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid black;
+  background-color: white;
 
+  > button {
+    position: relative;
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+
+    display: flex;
+    align-self: flex-end;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary);
+    padding: 10px;
+    color: var(--light);
+    border: none;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.2s;
+
+    :hover {
+      box-shadow: 0px 0px 5px var(--darkShadow);
+    }
+  }
+  > label {
+    font-size: 36px;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  > input {
+    height: 60px;
+    font-size: 24px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  > h1 {
+    font-size: 36px;
+    margin: 10px;
+  }
+`;

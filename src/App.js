@@ -17,6 +17,8 @@ import WaitingStud from "./pages/WaitingStud";
 
 const initialState = {
   socket: null,
+  courseId: null,
+  classId: null
 };
 
 const actions = {
@@ -24,6 +26,19 @@ const actions = {
     const newSocketConex = amount;
     store.setState({ socket: newSocketConex });
   },
+  addToCourse: (store, amount) => {
+    const newCourse = amount;
+    store.setState({ courseId: newCourse });
+  },
+  addToClass: (store, amount) => {
+    const newClass = amount;
+    store.setState({ classId: newClass });
+  },
+  addToQuizz: (store, amount) => {
+    const newQuizz = amount;
+    store.setState({ classId: newQuizz });
+  },
+
 };
 
 const useGlobal = globalHook(React, initialState, actions);
